@@ -6,7 +6,7 @@ const RegisterModel = require("./models/Register");
 const app = express();
 app.use(
   cors({
-    origin: "http://localhost:5173", // Allow frontend URL
+    origin: "forvercel-front.vercel.app", // Allow frontend URL
     credentials: true, // Allow credentials (cookies, authorization headers, etc.)
   })
 );
