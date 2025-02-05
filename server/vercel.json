@@ -1,12 +1,10 @@
 {
-  "headers": [
+  "version": 2,
+  "builds": [{ "src": "*.js", "use": "@vercel/node" }],
+  "routes": [
     {
-      "source": "/register",
-      "headers": [
-        { "key": "Access-Control-Allow-Origin", "value": "https://forvercel-front.vercel.app" },
-        { "key": "Access-Control-Allow-Methods", "value": "GET,POST,OPTIONS" },
-        { "key": "Access-Control-Allow-Headers", "value": "Content-Type" }
-      ]
+      "src": "/(.*)",
+      "dest": "/"
     }
   ]
 }

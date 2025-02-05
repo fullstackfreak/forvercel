@@ -11,7 +11,6 @@ app.use(
   })
 );
 
-//https://forvercel-front.vercel.app
 app.use(express.json());
 
 mongoose.connect(
