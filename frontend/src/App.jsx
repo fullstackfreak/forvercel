@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
-
+//https://forvercel-beta.vercel.app/register
 function App() {
   const [name, setName] = useState();
   const [email, setEmail] = useState();
@@ -11,7 +11,7 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("https://forvercel-beta.vercel.app/register", {
+      .post("https://forvercel-ten.vercel.app/register", {
         name,
         email,
         password,
