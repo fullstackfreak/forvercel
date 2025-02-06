@@ -11,7 +11,7 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("https://forvercel-api.vercel.app/register", {
+      .post("https://forvercel-back.vercel.app/register", {
         name,
         email,
         password,
