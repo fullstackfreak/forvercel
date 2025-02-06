@@ -4,12 +4,7 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/",
-      "header": {
-        "Access-Control-Allow-Origin": "*",
-        "Vary": "Origin",
-        "Access-Control-Allow-Headers": "Content-Type"
-      }
+      "dest": "/"
     }
   ]
 }
