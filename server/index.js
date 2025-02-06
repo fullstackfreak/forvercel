@@ -4,12 +4,12 @@ const cors = require("cors");
 const RegisterModel = require("./models/Register");
 
 const app = express();
-app.use(
-  cors({
-    origin: "*",
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  })
-);
+const corsOptions = {
+  origin: "https://forvercel-front.vercel.app", // Allow only this origin
+  credentials: true, // Allow credentials
+};
+
+app.use(cors(corsOptions));
 
 app.use(express.json());
 
