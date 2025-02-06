@@ -11,11 +11,19 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("https://forvercel-back.vercel.app/register", {
-        name,
-        email,
-        password,
-      })
+      .post(
+        "https://forvercel-back.vercel.app/register",
+        {
+          name,
+          email,
+          password,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
       .then((result) => console.log(result.data))
       .catch((err) => console.log(err));
   };
