@@ -1,44 +1,40 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const bcrypt = require("bcrypt");
 const RegisterModel = require("./models/Register");
 
 const app = express();
-
-app.use(express.json());
 app.use(
-  cors({ origin: "https://forvercel-front.vercel.app", credentials: true })
+  cors({
+    origin: "https://forvercel-front.vercel.app", // Allow only your frontend
+    credentials: true, // Allow cookies and authorization headers
+  })
 );
 
+app.use(express.json());
+
 mongoose.connect(
-  "mongodb+srv://sureshkumaroneteam:7eMboiXaP6KhV6iE@cluster0.qstot.mongodb.net/yourDatabaseName?retryWrites=true&w=majority",
-  { useNewUrlParser: true, useUnifiedTopology: true }
+  "mongodb+srv://sureshkumaroneteam:7eMboiXaP6KhV6iE@cluster0.qstot.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 );
 
 app.get("/", (req, res) => {
-  res.json("Hello from Vercel backend!");
+  res.json("Hello");
 });
-
-app.post("/register", async (req, res) => {
+app.post("/register", (req, res) => {
   const { name, email, password } = req.body;
-
-  try {
-    const user = await RegisterModel.findOne({ email });
-    if (user) return res.json("Already have an account");
-
-    const hashedPassword = await bcrypt.hash(password, 10);
-    const newUser = await RegisterModel.create({
-      name,
-      email,
-      password: hashedPassword,
-    });
-
-    res.json(newUser);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
+  RegisterModel.findOne({ email: email })
+    .then((user) => {
+      if (user) {
+        res.json("Already have an account");
+      } else {
+        RegisterModel.create({ name: name, email: email, password: password })
+          .then((result) => res.json(result))
+          .catch((err) => res.json(err));
+      }
+    })
+    .catch((err) => res.json(err));
 });
 
-// Export the Express app as a Vercel serverless function
-module.exports = app;
+app.listen(3001, () => {
+  console.log("Server is Running on port 3001");
+});
