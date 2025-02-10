@@ -6,15 +6,9 @@
       "use": "@vercel/node"
     }
   ],
-  "routes": [
-    {
-      "src": "/src/(.*)",
-      "dest": "/api/$1"
-    }
-  ],
+
   "headers": [
     {
-      "source": "/api/(.*)",
       "headers": [
         { "key": "Access-Control-Allow-Origin", "value": "*" },
         {
