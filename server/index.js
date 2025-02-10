@@ -6,14 +6,6 @@ const RegisterModel = require("./models/Register");
 
 const app = express();
 
-// ✅ Allow only your frontend domain
-const corsOptions = {
-  origin: "https://forvercel-front.vercel.app",
-  credentials: true, // Allow cookies & headers
-  optionsSuccessStatus: 200,
-};
-
-app.use(cors(corsOptions)); // Use CORS middleware
 
 app.use(express.json());
 
