@@ -8,9 +8,9 @@ function App() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   axios.defaults.withCredentials = true;
-  const handleSubmit = async (e) => {
+  const handleSubmit =  (e) => {
     e.preventDefault();
-   await axios
+    axios
       .post(
         "https://forvercel-back.vercel.app/register",
         {
