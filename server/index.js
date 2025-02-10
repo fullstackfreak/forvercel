@@ -6,7 +6,6 @@ const RegisterModel = require("./models/Register");
 
 const app = express();
 
-
 app.use(express.json());
 
 mongoose.connect(process.env.MONGO_URI, {
@@ -14,13 +13,13 @@ mongoose.connect(process.env.MONGO_URI, {
   useUnifiedTopology: true,
 });
 
-app.get("/", (req, res) => {
+app.get("/gg", (req, res) => {
   res.json("Hello from Vercel backend!");
 });
 
-app.get("/hello", handler);
+app.get("/", handler);
 
-export default function handler(req, res) {
+function handler(req, res) {
   res.setHeader("Access-Control-Allow-Origin", "*"); // Allow all origins
   res.setHeader("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
